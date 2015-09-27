@@ -199,15 +199,24 @@ window.addEventListener("load", function() {
         var text = box.insert(new Q.UI.Text({
             x: 0,
             y: 0,
-            label: "Game Over",
+            label: "Game Over!",
             family: "sans-serif",
             color: "#333",
             size: 36,
             weight: "600"
         }));
+        var playerDied = box.insert(new Q.UI.Text({
+            x: 0,
+            y: 50,
+            label: "Player Died ...",
+            family: "sans-serif",
+            color: "#f04124",
+            size: 20,
+            weight: "600"
+        }));
         var tryAgain = box.insert(new Q.UI.Button({
             x: 0,
-            y: 100,
+            y: 120,
             fill: "darkkhaki",
             label: "Try Again!"
         }));

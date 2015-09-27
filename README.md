@@ -1,1 +1,3 @@
 # testGame1
+#
+#Credits @ http://opengameart.org/ for the assets used in making this game...
