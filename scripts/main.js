@@ -1,6 +1,6 @@
 //Initialization of the quintus library after the window loads completely
 window.addEventListener("load", function() {
-    var Q = Quintus()
+    var Q = Quintus({development: true})
             .include("Scenes, Sprites, 2D, Input, Touch, UI, TMX, Audio")
             .setup({
                 maximize: true
@@ -41,8 +41,8 @@ window.addEventListener("load", function() {
             this.on("bump.top, bump.bottom, bump.left, bump.right", function(collision) {
                 if (collision.obj.isA("Player")) {
                     Q("Player").destroy();
-                    Q.audio.play("lc.mp3");
                     Q.stageScene("levelComplete", 1);
+                    Q.audio.play("lc.mp3");
                 }
             });
         }
@@ -61,8 +61,8 @@ window.addEventListener("load", function() {
             this.entity.on("bump.top", function(collision) {
                 if (collision.obj.isA("Player")) {
                     collision.obj.p.vy = -100;
-                    Q.audio.play("killEnemy.mp3");
                     this.destroy();
+                    Q.audio.play("killEnemy.mp3");
                 }
             });
         }
