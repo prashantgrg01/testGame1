@@ -1,0 +1,11 @@
+{
+    "ladybug": {"sx": 0, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 40},
+    "snail": {"sx": 71, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 48},
+    "saw": {"sx": 142, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 71},
+    "bee": {"sx": 213, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 48},
+    "fly": {"sx": 284, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 44},
+    "horns": {"sx": 355, "sy": 0, "cols": 1, "frames": 1, "tilew": 60, "tileh": 44},
+    "coin": {"sx": 426, "sy": 0, "cols": 1, "frames": 1, "tilew": 40, "tileh": 40},
+    "diamond": {"sx": 497, "sy": 0, "cols": 1, "frames": 1, "tilew": 55, "tileh": 40},
+    "flag": {"sx": 568, "sy": 0, "cols": 1, "frames": 1, "tilew": 71, "tileh": 71}
+}
