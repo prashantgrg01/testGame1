@@ -3,7 +3,7 @@ window.addEventListener("load", function() {
     var Q = Quintus()
             .include("Scenes, Sprites, 2D, Input, Touch, UI, TMX, Audio")
             .setup({
-                scaleToFit: true
+                maximize: true
             })
             .controls().touch();
     
