@@ -1,6 +1,6 @@
 //Initialization of the quintus library after the window loads completely
 window.addEventListener("load", function() {
-    var Q = Quintus({development: true})
+    var Q = Quintus()
             .include("Scenes, Sprites, 2D, Input, Touch, UI, TMX, Audio")
             .setup({
                 maximize: true
