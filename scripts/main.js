@@ -5,7 +5,7 @@ window.addEventListener("load", function() {
             .setup({
                 maximize: true
             })
-            .controls().touch();
+            .controls().touch().enableSound();
     
     //Initialization of levels number which starts from 1 as level1
     var levelNum = 1;
@@ -19,6 +19,15 @@ window.addEventListener("load", function() {
                 speed: 200   
             });
             this.add("2d, platformerControls");
+            this.on("jump", function() {
+                if (!this.p.isJumping && this.p.vy < 0) {
+                    this.p.isJumping = true;
+                    Q.audio.play("jump.mp3");
+                }
+            });
+            this.on("bump.bottom", function() {
+                this.p.isJumping = false; 
+            });
         }
     });
     
@@ -32,6 +41,7 @@ window.addEventListener("load", function() {
             this.on("bump.top, bump.bottom, bump.left, bump.right", function(collision) {
                 if (collision.obj.isA("Player")) {
                     Q("Player").destroy();
+                    Q.audio.play("lc.mp3");
                     Q.stageScene("levelComplete", 1);
                 }
             });
@@ -44,12 +54,14 @@ window.addEventListener("load", function() {
             this.entity.on("bump.left, bump.right, bump.bottom", function(collision) {
                 if (collision.obj.isA("Player")) {
                     Q("Player").destroy();
+                    Q.audio.play("die.mp3");
                     Q.stageScene("gameOver", 1);
                 }
             });
             this.entity.on("bump.top", function(collision) {
                 if (collision.obj.isA("Player")) {
                     collision.obj.p.vy = -100;
+                    Q.audio.play("killEnemy.mp3");
                     this.destroy();
                 }
             });
@@ -117,6 +129,8 @@ window.addEventListener("load", function() {
         
         player = Q("Player").first();
         stage.add("viewport").follow(player, {x: true, y: true});
+        Q.audio.stop();
+        Q.audio.play("randomSillyChip.mp3", {loop: true});
     });
     
     Q.scene("level2", function(stage) {
@@ -125,6 +139,8 @@ window.addEventListener("load", function() {
         
         player = Q("Player").first();
         stage.add("viewport").follow(player, {x: true, y: true});
+        Q.audio.stop();
+        Q.audio.play("randomSillyChip.mp3", {loop: true});
     });
     
     //Scene to display when each level completes
@@ -241,7 +257,7 @@ window.addEventListener("load", function() {
     });
     
     //Loading required assets
-    Q.loadTMX("level1.tmx, level2.tmx, p1_front.png, p1_front.json, objects_spritesheet.png, objects_spritesheet.json", function() {
+    Q.loadTMX("level1.tmx, level2.tmx, p1_front.png, p1_front.json, objects_spritesheet.png, objects_spritesheet.json, jump.mp3, killEnemy.mp3, lc.mp3, die.mp3, randomSillyChip.mp3", function() {
         Q.compileSheets("p1_front.png", "p1_front.json");
         Q.compileSheets("objects_spritesheet.png", "objects_spritesheet.json");
         Q.stageScene(("level"+levelNum).toString());
